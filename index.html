@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENGKEL MODERN SEMARANG - Layanan Perbaikan Kendaraan Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .map-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .map-modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: auto;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/img/body/background1.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .service-icon {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-car text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">BENGKEL MODERN</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 font-medium">Beranda</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 font-medium">Layanan</a>
+                    <a href="#products" class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 font-medium">Produk</a>
+                    <a href="#locations" class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 font-medium">Lokasi</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500 px-3 py-2 font-medium">Kontak</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button p-2 rounded-md text-gray-700 hover:text-blue-500 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500">Beranda</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500">Layanan</a>
+                <a href="#products" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500">Produk</a>
+                <a href="#locations" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500">Lokasi</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-500">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Bengkel Modern Semarang</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Layanan perbaikan kendaraan terbaik di Jawa Tengah dengan teknisi berpengalaman dan peralatan canggih.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Hubungi Kami</a>
+                <a href="#services" class="bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition duration-300">Layanan Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Layanan Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai layanan perbaikan kendaraan dengan standar tinggi dan garansi resmi.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="service-icon text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Perbaikan Mesin</h3>
+                    <p class="text-gray-600">Layanan perbaikan mesin kendaraan dengan diagnosa komputer dan teknisi bersertifikat.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="service-icon text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Ganti Oli & Servis Rutin</h3>
+                    <p class="text-gray-600">Servis berkala dengan oli premium dan komponen original untuk performa optimal.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="service-icon text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-car-battery"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Perbaikan Kelistrikan</h3>
+                    <p class="text-gray-600">Diagnosa dan perbaikan sistem kelistrikan kendaraan dengan alat modern.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="service-icon text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-tire"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Ganti Ban & Spooring</h3>
+                    <p class="text-gray-600">Layanan ganti ban dan spooring balancing untuk kenyamanan berkendara.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="service-icon text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-car-crash"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Body Repair & Cat Ulang</h3>
+                    <p class="text-gray-600">Perbaikan body dan pengecatan ulang dengan hasil seperti baru.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-gray-50 rounded-lg p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="service-icon text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Emergency Service</h3>
+                    <p class="text-gray-600">Layanan darurat 24 jam untuk masalah kendaraan yang tidak terduga.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Katalog Produk</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai suku cadang dan aksesoris kendaraan berkualitas.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="assets/img/parts/oli.png" alt="Oli Mobil" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Oli Mesin Premium</h3>
+                        <p class="text-gray-600 text-sm mb-3">Oli mesin sintetik untuk performa maksimal dan perlindungan mesin.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-blue-600">Rp 250.000</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="assets/img/parts/ban.png" alt="Ban Mobil" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Ban All Season</h3>
+                        <p class="text-gray-600 text-sm mb-3">Ban berkualitas tinggi untuk segala musim dengan daya cengkeram optimal.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-blue-600">Rp 1.250.000</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="assets/img/parts/aki.jpg" alt="Aki Mobil" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Aki Maintenance Free</h3>
+                        <p class="text-gray-600 text-sm mb-3">Aki berkualitas tinggi dengan teknologi maintenance free untuk ketahanan lebih.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-blue-600">Rp 1.750.000</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Detail</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <img src="assets/img/parts/rem.png" alt="Kampas Rem" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Kampas Rem Keramik</h3>
+                        <p class="text-gray-600 text-sm mb-3">Kampas rem keramik premium untuk pengereman lebih halus dan tahan lama.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-blue-600">Rp 450.000</span>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition duration-300">
+                    Lihat Semua Produk <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Lokasi Bengkel Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kunjungi bengkel kami di berbagai lokasi strategis di Semarang dan sekitarnya.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Location 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/img/bengkel/semarang.png" alt="Peta Lokasi" class="w-full h-full object-cover cursor-pointer" onclick="openMapModal('-7.0051453,110.4381254', 'Bengkel Modern Semarang Pusat')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bengkel Modern Semarang Pusat</h3>
+                        <p class="text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Jl. Pemuda No. 123, Semarang Tengah
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                            <i class="fas fa-clock text-blue-500 mr-2"></i> Buka: Senin-Minggu, 08:00-21:00 WIB
+                        </p>
+                        <button onclick="openMapModal('-7.0051453,110.4381254', 'Bengkel Modern Semarang Pusat')" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                            <i class="fas fa-map-marked-alt mr-2"></i> Lihat Peta
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Location 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/img/bengkel/banyumanik.png" alt="Peta Lokasi" class="w-full h-full object-cover cursor-pointer" onclick="openMapModal('-6.9962,110.4225', 'Bengkel Modern Banyumanik')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bengkel Modern Banyumanik</h3>
+                        <p class="text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Jl. Prof. Sudarto SH No. 45, Banyumanik
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                            <i class="fas fa-clock text-blue-500 mr-2"></i> Buka: Senin-Minggu, 08:00-20:00 WIB
+                        </p>
+                        <button onclick="openMapModal('-6.9962,110.4225', 'Bengkel Modern Banyumanik')" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                            <i class="fas fa-map-marked-alt mr-2"></i> Lihat Peta
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Location 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="assets/img/bengkel/tembalang.png" alt="Peta Lokasi" class="w-full h-full object-cover cursor-pointer" onclick="openMapModal('-6.9667,110.4167', 'Bengkel Modern Tembalang')">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Bengkel Modern Tembalang</h3>
+                        <p class="text-gray-600 mb-4">
+                            <i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Jl. Tembalang Raya No. 78, Tembalang
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                            <i class="fas fa-clock text-blue-500 mr-2"></i> Buka: Senin-Minggu, 08:00-19:00 WIB
+                        </p>
+                        <button onclick="openMapModal('-6.9667,110.4167', 'Bengkel Modern Tembalang')" class="text-blue-500 hover:text-blue-700 font-medium flex items-center">
+                            <i class="fas fa-map-marked-alt mr-2"></i> Lihat Peta
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Modal -->
+    <div id="mapModal" class="map-modal">
+        <div class="map-modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modalLocationTitle" class="text-xl font-bold text-gray-800"></h3>
+                <button onclick="closeMapModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <div id="mapContainer" class="w-full h-96 bg-gray-200 mb-4">
+                <!-- Map will be loaded here -->
+                <iframe id="mapIframe" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="flex justify-between">
+                <button onclick="getDirections()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                    <i class="fas fa-directions mr-2"></i> Dapatkan Petunjuk
+                </button>
+                <button onclick="closeMapModal()" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami siap membantu kebutuhan perbaikan kendaraan Anda.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Informasi Kontak</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Alamat</h4>
+                                <p class="text-gray-600">Jl. Pemuda No. 123, Semarang Tengah, Jawa Tengah 50132</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Telepon</h4>
+                                <p class="text-gray-600">(024) 1234567</p>
+                                <p class="text-gray-600">0812-3456-7890 (WhatsApp)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600">info@bengkelmodernsemarang.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Jam Operasional</h4>
+                                <p class="text-gray-600">Senin - Minggu: 08:00 - 21:00 WIB</p>
+                                <p class="text-gray-600">Emergency Service: 24 Jam</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium text-gray-800 mb-4">Ikuti Kami</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Kirim Pesan</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Nomor Telepon</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subjek</label>
+                            <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Pilih subjek</option>
+                                <option value="service">Pertanyaan Layanan</option>
+                                <option value="product">Pertanyaan Produk</option>
+                                <option value="appointment">Buat Janji Servis</option>
+                                <option value="complaint">Keluhan</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition duration-300 w-full">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-car text-blue-400 mr-2"></i> BENGKEL MODERN
+                    </h3>
+                    <p class="text-gray-400">Layanan perbaikan kendaraan terbaik di Semarang dengan teknisi berpengalaman dan peralatan canggih.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Beranda</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Layanan</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition duration-300">Produk</a></li>
+                        <li><a href="#locations" class="text-gray-400 hover:text-white transition duration-300">Lokasi</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Layanan</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Perbaikan Mesin</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Servis Rutin</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Perbaikan Kelistrikan</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Body Repair</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Emergency Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Berlangganan</h4>
+                    <p class="text-gray-400 mb-4">Dapatkan informasi promo dan tips perawatan kendaraan langsung ke email Anda.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Email Anda" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Bengkel Modern Semarang. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Map modal functions
+        let currentLocationCoords = '';
+        let currentLocationTitle = '';
+        
+        function openMapModal(coords, title) {
+            currentLocationCoords = coords;
+            currentLocationTitle = title;
+            
+            document.getElementById('modalLocationTitle').textContent = title;
+            
+            // Update iframe src with the coordinates
+            const mapIframe = document.getElementById('mapIframe');
+            mapIframe.src = `https://maps.google.com/maps?q=${coords}&z=15&output=embed`;
+            
+            document.getElementById('mapModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMapModal() {
+            document.getElementById('mapModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function getDirections() {
+            window.open(`https://www.google.com/maps/dir/?api=1&destination=${currentLocationCoords}&travelmode=driving`);
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('mapModal')) {
+                closeMapModal();
+            }
+        }
+        
+        // Close modal with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMapModal();
+            }
+        });
+    </script>
+</body>
+</html>
